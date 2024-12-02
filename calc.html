@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Simple Calculator</title>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" class="display" id="display" disabled>
+    <br>
+    <button class="button" onclick="appendValue('7')">7</button>
+    <button class="button" onclick="appendValue('8')">8</button>
+    <button class="button" onclick="appendValue('9')">9</button>
+    <button class="button" onclick="clearDisplay()">C</button>
+    <br>
+    <button class="button" onclick="appendValue('4')">4</button>
+    <button class="button" onclick="appendValue('5')">5</button>
+    <button class="button" onclick="appendValue('6')">6</button>
+    <button class="button" onclick="appendValue('/')">/</button>
+    <br>
+    <button class="button" onclick="appendValue('1')">1</button>
+    <button class="button" onclick="appendValue('2')">2</button>
+    <button class="button" onclick="appendValue('3')">3</button>
+    <button class="button" onclick="appendValue('*')">*</button>
+    <br>
+    <button class="button" onclick="appendValue('0')">0</button>
+    <button class="button" onclick="appendValue('.')">.</button>
+    <button class="button" onclick="appendValue('-')">-</button>
+    <button class="button" onclick="appendValue('+')">+</button>
+    <br>
+    <button class="button" style="width: 256px;" onclick="calculateResult()">=</button>
+</div>
+
+<script>
+    function appendValue(value) {
+        document.getElementById('display').value += value;//Appends this value to the current value of the display input.
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = ''; //clearDisplay() Function: Clears the display input by setting its value to an empty string.
+    }
+
+    function calculateResult() { 
+        try { //try block to catch any errors that may occur during calculation
+            const result = eval(document.getElementById('display').value);//the eval function evaluates the expression entered in the display.
+            document.getElementById('display').value = result;//If the evaluation is successful, it updates the display with the result.
+        } catch (error) { //catch block to handle any errors that may occur during calculation
+            document.getElementById('display').value = 'Error';//If there's an error it displays "Error".
+        }
+    }
+</script>
+
+</body>
+</html>
+
